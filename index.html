@@ -7,25 +7,25 @@
   <!-- Importação de fonte personalizada -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Variáveis CSS para o modo noturno (padrão) */
+    /* Variáveis CSS para o modo noturno (padrão) com acentos verdes */
     :root {
       --bg-color: #121212;
-      --text-color: #CCCCCC; /* Texto um pouco mais escuro */
-      --accent-color: #9E9E9E;    /* Cor de destaque */
-      --accent-light: #B0B0B0;    /* Variante para hover */
+      --text-color: #CCCCCC; /* Texto um pouco mais escuro para melhor legibilidade */
+      --accent-color: #7ED957; /* Verde original */
+      --accent-light: #a2f35b; /* Verde mais claro */
       --card-bg: #1e1e1e;
       --footer-bg: #1e1e1e;
       --button-text: #121212;
     }
-    /* Variáveis para o modo diurno */
+    /* Variáveis para o modo diurno com acentos verdes mais escuros */
     .light-mode {
       --bg-color: #FFFFFF;
       --text-color: #121212;
-      --accent-color: #333333;
-      --accent-light: #555555;
+      --accent-color: #66B443;  /* Verde mais escuro para o modo dia */
+      --accent-light: #5A9E3D;  /* Variante correspondente */
       --card-bg: #F5F5F5;
       --footer-bg: #F5F5F5;
-      --button-text: #FFFFFF;
+      --button-text: #121212;
     }
     /* Estilização geral */
     body {
@@ -56,7 +56,6 @@
     }
     .header-text h2 {
       margin: 0;
-      /* Responsivo: tamanho mínimo 24px, tamanho ideal 5vw, máximo 42px */
       font-size: clamp(24px, 5vw, 42px);
       color: var(--accent-color);
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
@@ -71,7 +70,6 @@
     }
     .header-text p {
       margin: 4px 0 0 0;
-      /* Responsivo: tamanho mínimo 18px, ideal 4vw, máximo 32px */
       font-size: clamp(18px, 4vw, 32px);
       color: var(--text-color);
       font-weight: 400;
@@ -82,7 +80,7 @@
       height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid var(--text-color);
+      border: 4px solid #FFFFFF; /* Mantém a borda branca */
       box-shadow: 0 0 0 3px var(--accent-color);
     }
     .header-photo img {
@@ -227,7 +225,7 @@
       .header-photo {
         width: 60px;
         height: 60px;
-        border: 2px solid var(--text-color);
+        border: 2px solid #FFFFFF;
         box-shadow: 0 0 0 2px var(--accent-color);
       }
       .container {
@@ -265,7 +263,7 @@
     <div class="button-group">
       <button class="expand-collapse-button" onclick="expandAll()">🔽 Expandir Tudo</button>
       <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
-      <button id="mode-toggle" onclick="toggleMode()">Dia</button>
+      <button id="mode-toggle" onclick="toggleMode()">☀️Dia</button>
     </div>
 
     <!-- Seção: Da Personalidade e Habilidades -->
@@ -338,7 +336,7 @@
   <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
   <button class="back-to-bottom" onclick="scrollToBottom()">⬇️</button>
 
-  <!-- Rodapé fixo com sombra -->
+  <!-- Rodapé fixo -->
   <footer>
     Jesiel Pereira Matos - <span id="currentYear"></span>
   </footer>
@@ -401,18 +399,17 @@
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
-    // Alterna entre modos (Noite e Dia)
+    // Alterna entre modos (Noite e Dia) e define automaticamente conforme o horário local
     function toggleMode() {
       document.body.classList.toggle('light-mode');
       const modeButton = document.getElementById("mode-toggle");
       if (document.body.classList.contains("light-mode")) {
-        modeButton.textContent = "☀️Dia";
+        modeButton.textContent = "☀️Modo Dia";
       } else {
-        modeButton.textContent = "🌛Noite";
+        modeButton.textContent = "🌛Modo Noturno";
       }
     }
 
-    // Define o modo automaticamente conforme o horário local (entre 7h e 19h é Dia)
     window.addEventListener('load', function(){
       const hour = new Date().getHours();
       const modeButton = document.getElementById("mode-toggle");
