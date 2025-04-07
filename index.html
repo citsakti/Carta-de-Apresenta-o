@@ -14,49 +14,51 @@
       font-family: 'Roboto', Arial, Helvetica, sans-serif;
       line-height: 1.45;
     }
-    /* Cabeçalho fixo à esquerda, ampliado */
+    /* Cabeçalho fixo à esquerda com padding reduzido */
     .header-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       background-color: #121212;
-      padding: 30px 8vw;
+      padding: 15px 8vw;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
     .header {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 15px;
     }
     .header-text h2 {
       margin: 0;
-      font-size: 42px;
+      /* Responsivo: tamanho mínimo 24px, tamanho ideal 5vw, máximo 42px */
+      font-size: clamp(24px, 5vw, 42px);
       color: #7ED957;
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-      padding-bottom: 15px;
+      padding-bottom: 5px;
     }
     .header-line {
       width: 100%;
       height: 3px;
       background: linear-gradient(to right, #7ED957, #a2f35b);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       border-radius: 2px;
     }
     .header-text p {
-      margin: 8px 0 0 0;
-      font-size: 32px;
+      margin: 4px 0 0 0;
+      /* Responsivo: tamanho mínimo 18px, ideal 4vw, máximo 32px */
+      font-size: clamp(18px, 4vw, 32px);
       color: #FFFFFF;
       font-weight: 400;
     }
     .header-photo {
       flex-shrink: 0;
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      border: 5px solid #FFFFFF;
+      border: 4px solid #FFFFFF;
       box-shadow: 0 0 0 3px #7ED957;
     }
     .header-photo img {
@@ -64,12 +66,12 @@
       height: 100%;
       object-fit: cover;
     }
-    /* Container principal (margem superior reduzida e inferior para o rodapé) */
+    /* Container principal: margem superior ajustada para que os botões fiquem visíveis abaixo do cabeçalho */
     .container {
       padding: 5vw 8vw;
       text-align: justify;
       box-sizing: border-box;
-      margin-top: 170px; /* Espaço reduzido entre o cabeçalho e o conteúdo */
+      margin-top: 120px;
       margin-bottom: 80px;
     }
     /* ==================== BOTÕES GERAIS ==================== */
@@ -77,6 +79,7 @@
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
     .toggle-button,
     .expand-collapse-button {
@@ -88,6 +91,7 @@
       cursor: pointer;
       font-weight: bold;
       transition: background-color 0.3s, transform 0.3s;
+      font-size: 16px;
     }
     .toggle-button:hover,
     .expand-collapse-button:hover {
@@ -110,6 +114,7 @@
     .card h3 {
       color: #7ED957;
       margin: 0 0 6px 0;
+      font-size: 24px;
     }
     /* ==================== CONTEÚDO DAS SEÇÕES ==================== */
     .section-content {
@@ -122,10 +127,11 @@
       opacity: 1;
     }
     /* ==================== BOTÕES FIXOS DE NAVEGAÇÃO ==================== */
+    /* Botão "subir tudo" (⬆️) fica no lado esquerdo agora */
     .back-to-top {
       position: fixed;
-      bottom: 70px; /* Posicionados acima do rodapé */
-      right: 20px;
+      bottom: 70px;
+      left: 20px;
       background-color: #7ED957;
       color: #121212;
       padding: 10px 15px;
@@ -140,10 +146,11 @@
       background-color: #a2f35b;
       transform: scale(1.1);
     }
+    /* Botão "descer tudo" (⬇️) fica no lado direito */
     .back-to-bottom {
       position: fixed;
-      bottom: 70px; /* Posicionados acima do rodapé */
-      left: 20px;
+      bottom: 70px;
+      right: 20px;
       background-color: #7ED957;
       color: #121212;
       padding: 10px 15px;
@@ -174,6 +181,40 @@
       padding: 10px;
       background-color: #1e1e1e;
       font-size: 16px;
+    }
+    
+    /* Media Query para telas pequenas */
+    @media (max-width: 480px) {
+      .header-container {
+        padding: 8px 4vw;
+      }
+      .header {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .header-text h2 {
+        font-size: clamp(18px, 6vw, 24px);
+      }
+      .header-text p {
+        font-size: clamp(14px, 4vw, 18px);
+      }
+      .header-photo {
+        width: 60px;
+        height: 60px;
+        border: 2px solid #FFFFFF;
+        box-shadow: 0 0 0 2px #7ED957;
+      }
+      .container {
+        margin-top: 90px;
+      }
+      .toggle-button,
+      .expand-collapse-button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+      .card h3 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -247,12 +288,12 @@
       <button class="toggle-button" onclick="toggleSection('sec4', this)">📖 Clique aqui para ler</button>
     </div>
 
-    <!-- Botão "Recolher Tudo" no final da página (aparecendo acima da nova sessão) -->
+    <!-- Botão "Recolher Tudo" no final da página (acima da nova sessão) -->
     <div class="button-group bottom-buttons">
       <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
     </div>
 
-    <!-- Nova sessão: Do Processo de Criação Desta Carta (vem fechada) -->
+    <!-- Nova sessão: Do Processo de Criação Desta Carta (inicia fechada) -->
     <div class="card">
       <h3>📝 Do Processo de Criação Desta Carta</h3>
       <div id="sec5" class="section-content">
