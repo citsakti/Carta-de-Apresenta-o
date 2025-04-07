@@ -10,9 +10,9 @@
     /* Variáveis CSS para o modo noturno (padrão) com acentos verdes */
     :root {
       --bg-color: #121212;
-      --text-color: #CCCCCC; /* Texto um pouco mais escuro para melhor legibilidade */
-      --accent-color: #7ED957; /* Verde original */
-      --accent-light: #a2f35b; /* Verde mais claro */
+      --text-color: #CCCCCC; /* Texto um pouco mais escuro para melhor legibilidade no modo noturno */
+      --accent-color: #7ED957; /* Verde original para o modo noite */
+      --accent-light: #a2f35b; /* Verde mais claro para hover no modo noite */
       --card-bg: #1e1e1e;
       --footer-bg: #1e1e1e;
       --button-text: #121212;
@@ -21,8 +21,9 @@
     .light-mode {
       --bg-color: #FFFFFF;
       --text-color: #121212;
-      --accent-color: #66B443;  /* Verde mais escuro para o modo dia */
-      --accent-light: #5A9E3D;  /* Variante correspondente */
+      /* Ajuste dos tons de verde para ficarem mais escuros e confortáveis à leitura */
+      --accent-color: #4C9A33;  /* Verde mais escuro para o modo dia */
+      --accent-light: #3E7C28;  /* Variante correspondente para hover no modo dia */
       --card-bg: #F5F5F5;
       --footer-bg: #F5F5F5;
       --button-text: #121212;
@@ -415,10 +416,10 @@
       const modeButton = document.getElementById("mode-toggle");
       if (hour >= 7 && hour < 19) { // Modo Dia
         document.body.classList.add("light-mode");
-        modeButton.textContent = "☀️Dia";
+        modeButton.textContent = "☀️Modo Dia";
       } else { // Modo Noite
         document.body.classList.remove("light-mode");
-        modeButton.textContent = "🌛Noite";
+        modeButton.textContent = "🌛Modo Noturno";
       }
     });
 
