@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Carta de Apresentação – Jesiel Matos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Importação de fonte personalizada -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: #FFFFFF;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+    /* Cabeçalho fixo à esquerda, ampliado */
+    .header-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #121212;
+      padding: 30px 8vw;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    .header-text h2 {
+      margin: 0;
+      font-size: 42px;
+      color: #7ED957;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      padding-bottom: 15px;
+    }
+    .header-line {
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, #7ED957, #a2f35b);
+      margin-bottom: 10px;
+      border-radius: 2px;
+    }
+    .header-text p {
+      margin: 8px 0 0 0;
+      font-size: 32px;
+      color: #FFFFFF;
+      font-weight: 400;
+    }
+    .header-photo {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #FFFFFF;
+      box-shadow: 0 0 0 3px #7ED957;
+    }
+    .header-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* Container principal (margem superior reduzida e inferior para o rodapé) */
+    .container {
+      padding: 5vw 8vw;
+      text-align: justify;
+      box-sizing: border-box;
+      margin-top: 170px; /* Espaço reduzido entre o cabeçalho e o conteúdo */
+      margin-bottom: 80px;
+    }
+    /* ==================== BOTÕES GERAIS ==================== */
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .toggle-button,
+    .expand-collapse-button {
+      background-color: #7ED957;
+      color: #121212;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    .toggle-button:hover,
+    .expand-collapse-button:hover {
+      background-color: #a2f35b;
+      transform: scale(1.05);
+    }
+    /* ==================== CARDS (SEÇÕES) ==================== */
+    .card {
+      border: 1px solid #7ED957;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #1e1e1e;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+    }
+    .card h3 {
+      color: #7ED957;
+      margin: 0 0 6px 0;
+    }
+    /* ==================== CONTEÚDO DAS SEÇÕES ==================== */
+    .section-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s ease, opacity 0.6s ease;
+      opacity: 0;
+    }
+    .section-content.open {
+      opacity: 1;
+    }
+    /* ==================== BOTÕES FIXOS DE NAVEGAÇÃO ==================== */
+    .back-to-top {
+      position: fixed;
+      bottom: 70px; /* Posicionados acima do rodapé */
+      right: 20px;
+      background-color: #7ED957;
+      color: #121212;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      font-weight: bold;
+    }
+    .back-to-top:hover {
+      background-color: #a2f35b;
+      transform: scale(1.1);
+    }
+    .back-to-bottom {
+      position: fixed;
+      bottom: 70px; /* Posicionados acima do rodapé */
+      left: 20px;
+      background-color: #7ED957;
+      color: #121212;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      font-weight: bold;
+    }
+    .back-to-bottom:hover {
+      background-color: #a2f35b;
+      transform: scale(1.1);
+    }
+    /* ==================== BOTÃO RECOLHER TUDO NO FINAL ==================== */
+    .bottom-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    /* ==================== RODAPÉ FIXO ==================== */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      background-color: #1e1e1e;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho fixo com foto (alinhado à esquerda) -->
+  <div class="header-container">
+    <div class="header">
+      <div class="header-text">
+        <h2>CARTA DE APRESENTAÇÃO</h2>
+        <div class="header-line"></div>
+        <p>Jesiel Matos</p>
+      </div>
+      <div class="header-photo">
+        <img src="https://github.com/citsakti/jesiel/blob/main/e37cd146-ee72-47a1-9cdd-a679762fae7a.jpg?raw=true" alt="Foto de Jesiel Matos">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Botões "Expandir Tudo" e "Recolher Tudo" no topo -->
+    <div class="button-group">
+      <button class="expand-collapse-button" onclick="expandAll()">🔽 Expandir Tudo</button>
+      <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
+    </div>
+
+    <!-- Seção: Da Personalidade e Habilidades -->
+    <div class="card">
+      <h3>🧠 Da Personalidade e Habilidades</h3>
+      <div id="sec1" class="section-content">
+        <p>Sou bastante curioso, sempre buscando entender o “porquê” das coisas, e apesar das dificuldades inerentes à vida, mantenho uma forte motivação intrínseca. Gosto genuinamente de explorar novas ideias e enfrentar desafios, o que me impulsiona a estar constantemente estudando e buscando abordagens inovadoras. Tenho um temperamento leve e priorizo a estabilidade, pois acredito que um ambiente equilibrado favorece a produtividade. Possuo raciocínio rápido e uma boa capacidade de adaptação a diferentes cenários, além de saber trabalhar bem em equipe, contribuindo ativamente e mantendo a serenidade mesmo em situações de alta pressão, o que me permite tomar decisões ponderadas. Considero ter um perfil genuinamente colaborativo, sou comprometido com os objetivos, proativo na identificação de necessidades e atento aos detalhes – características que considero essenciais para agregar valor real e consistente às atividades em qualquer organização.</p>
+      </div>
+      <button class="toggle-button" onclick="toggleSection('sec1', this)">📖 Clique aqui para ler</button>
+    </div>
+
+    <!-- Seção: Da Trajetória Acadêmica -->
+    <div class="card">
+      <h3>🎓 Da Trajetória Acadêmica</h3>
+      <div id="sec2" class="section-content">
+        <p>O começo de minha trajetória acadêmica foi um pouco conturbado. Vindo do interior do Estado do Ceará, enfrentei diversas dificuldades para poder cursar Engenharia Civil em uma faculdade pública e não consegui finalizar o curso. Por razões pessoais e por necessitar trabalhar, não pude dar continuidade ao curso por ser integral e, assim, tive que abandoná‑lo. Contudo, durante esse período, embora não o tenha concluído, pude absorver conhecimentos valiosos que ampliaram minha visão sobre o universo da construção e da engenharia. Aprendi, por exemplo, os fundamentos da resistência dos materiais e a importância de projetar estruturas seguras e eficientes, compreendendo como cada detalhe impacta a estabilidade de uma obra.</p>
+        <p>Minha facilidade com os números e com o raciocínio lógico se destacou durante os estudos, permitindo‑me absorver conceitos complexos com rapidez e eficácia. Essa habilidade se estendeu para outras disciplinas técnicas e analíticas, contribuindo para uma abordagem meticulosa e inovadora em todos os desafios. O conhecimento adquirido me capacitou a solucionar problemas de forma criativa e a desenvolver projetos com um olhar crítico, habilidades que considero fundamentais não só para a engenharia, mas para toda a área de exatas.</p>
+        <p>Além disso, tive contato com metodologias de gerenciamento de obras e planejamento, o que me ensinou a importância da organização, da comunicação e do trabalho em equipe. Essa bagagem, aliada à facilidade que demonstrei em entender e aplicar conceitos matemáticos e científicos, reforça minha capacidade de me adaptar e contribuir de maneira significativa em diferentes contextos profissionais e acadêmicos. Essa experiência me preparou para encarar desafios de forma resiliente e adaptativa, evidenciando que, mesmo com uma trajetória não convencional, o aprendizado técnico e a aptidão para a área das exatas são diferenciais que impulsionam minha carreira e meu crescimento pessoal.</p>
+        <p>Atualmente, curso Gestão da Tecnologia da Informação, o que tem ampliado meu entendimento sobre sistemas, redes e infraestrutura tecnológica. Descobri recentemente que a área de TI, especialmente o ramo de redes, ressoa fortemente com minhas habilidades e paixões, pois alia elementos de exatas e lógica, áreas nas quais sempre tive facilidade.</p>
+        <p>A grade curricular, que abrange desde pensamento computacional e segurança cibernética até arquitetura de computadores e desenvolvimento web, me oferece uma visão abrangente que complementa e valoriza os conhecimentos adquiridos durante minha trajetória em Engenharia Civil. Naquela época, mesmo sem concluir o curso, aprendi fundamentos sólidos como a análise de estruturas, a importância da precisão nos cálculos e o detalhamento dos projetos, habilidades que se traduzem diretamente na capacidade de resolver problemas complexos na área de TI.</p>
+        <p>Além disso, os cursos complementares que concluí – como “Redes: dos Conceitos Iniciais à Criação de uma Intranet” e “Excel Intermediário” – fortaleceram minha base técnica e desenvolveram meu raciocínio analítico. Combinando essas experiências com o domínio avançado da língua portuguesa, sinto que consigo articular e comunicar soluções com clareza, contribuindo para o trabalho em equipe e para a implementação de projetos inovadores.</p>
+        <p>Essa nova fase acadêmica tem sido extremamente enriquecedora, pois me permite unir o rigor das exatas com a inovação tecnológica, demonstrando que o conhecimento técnico adquirido em diferentes áreas pode ser adaptado e aplicado de forma sinérgica. Estou particularmente entusiasmado com a área de redes, onde vejo grande potencial para aplicar meu pensamento crítico e facilidade com números, consolidando minha evolução tanto acadêmica quanto profissional.</p>
+      </div>
+      <button class="toggle-button" onclick="toggleSection('sec2', this)">📖 Clique aqui para ler</button>
+    </div>
+
+    <!-- Seção: Da Trajetória Profissional -->
+    <div class="card">
+      <h3>💼 Da Trajetória Profissional</h3>
+      <div id="sec3" class="section-content">
+        <p>Minhas experiências profissionais e acadêmicas têm sido extremamente enriquecedoras, proporcionando um desenvolvimento sólido e diversificado de competências que podem agregar valor em diversas funções, independentemente da área de atuação. Cada etapa da minha trajetória me ensinou lições únicas, que, somadas, formaram uma base robusta tanto de hard skills quanto de soft skills.</p>
+        <p>Na Engenharia Civil, mesmo sem concluir o curso, aprendi fundamentos técnicos essenciais, como a análise estrutural, o comportamento de materiais e o gerenciamento de projetos. Esse conhecimento não só desenvolveu meu raciocínio lógico e minha precisão no manuseio de números, mas também me ensinou a importância do planejamento e da atenção aos detalhes – habilidades transferíveis para qualquer área que exija rigor técnico e analítico.</p>
+        <p>Durante meu estágio na Universidade Federal do Ceará, e como bolsista de Iniciação Acadêmica no Laboratório de Ensaios Estruturais, tive a oportunidade de trabalhar em projetos reais, onde aprendi a aplicar teorias em situações práticas. Essa vivência aprimorou minha capacidade de produzir e gerenciar projetos, além de melhorar significativamente minha produção textual, ferramenta fundamental para uma comunicação clara e eficiente em qualquer ambiente profissional.</p>
+        <p>Um dos marcos mais significativos da minha trajetória foi a participação no Grupo Preserve, onde atuei como conferencista e exercitei, de forma intensa, tanto minhas hard skills quanto minhas soft skills. Nesse ambiente, fui responsável por atividades críticas como o recebimento, conferência, tratamento e condicionamento de numerários, a realização de crédito de clientes junto aos bancos e a solicitação de transações bancárias. Essa experiência exigiu de mim um elevado nível de precisão, organização e domínio técnico, ao mesmo tempo em que fortaleceu competências interpessoais essenciais.</p>
+        <p>Durante esse período, desenvolvi paciência, trabalho em equipe, liderança indireta e persuasão, habilidades fundamentais para conduzir conversas e interações em contextos desafiadores. Além disso, a rotina de tarefas financeiras e bancárias me ensinou a importância da resiliência e do respeito à hierarquia, permitindo‑me enfrentar adversidades com serenidade e tomar decisões assertivas. Essas competências, aliadas ao rigor técnico das atividades desempenhadas, não só ampliaram minha capacidade de análise e execução, mas também contribuíram significativamente para minha evolução profissional e pessoal.</p>
+        <p>Complementando essa base técnica e comportamental, os cursos complementares – como Excel Intermediário, Redes: dos Conceitos Básicos à Criação de uma Intranet e Português Avançado – reforçaram minha capacidade de análise, organização e comunicação. Essa combinação de habilidades me torna apto a contribuir em projetos e funções diversas, desde a área de TI até setores que exigem forte competência analítica e capacidade de liderança.</p>
+      </div>
+      <button class="toggle-button" onclick="toggleSection('sec3', this)">📖 Clique aqui para ler</button>
+    </div>
+
+    <!-- Seção: Do Meu Perfil -->
+    <div class="card">
+      <h3>👤 Do Meu Perfil</h3>
+      <div id="sec4" class="section-content">
+        <p>Sou um profissional versátil, que combina rigor técnico e profundo senso analítico com habilidades interpessoais essenciais. Minha trajetória, marcada por experiências em Engenharia Civil, Gestão da Tecnologia da Informação e atuação como conferencista, moldou um perfil capaz de lidar com desafios complexos, aplicar soluções inovadoras e manter a precisão e a organização em todas as atividades. Minhas hard skills abrangem desde o domínio de conceitos matemáticos e científicos até a execução meticulosa de processos financeiros e de crédito, demonstrando minha aptidão para ambientes que exigem alta responsabilidade técnica. Paralelamente, minhas soft skills – como paciência, trabalho em equipe, liderança indireta, persuasão e resiliência – me permitem conduzir interações e projetos com eficácia e clareza, sempre mantendo o equilíbrio mesmo sob pressão.</p>
+        <p>Essa combinação de competências me posiciona de forma diferenciada no mercado de trabalho, agregando valor a qualquer equipe ou projeto, independentemente do setor. Com uma comunicação assertiva, habilidade analítica aguçada e espírito inovador, estou preparado para contribuir de maneira significativa, demonstrando que, mesmo diante de desafios, a união entre técnica e empatia é o caminho para resultados de excelência.</p>
+      </div>
+      <button class="toggle-button" onclick="toggleSection('sec4', this)">📖 Clique aqui para ler</button>
+    </div>
+
+    <!-- Botão "Recolher Tudo" no final da página (aparecendo acima da nova sessão) -->
+    <div class="button-group bottom-buttons">
+      <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
+    </div>
+
+    <!-- Nova sessão: Do Processo de Criação Desta Carta (vem fechada) -->
+    <div class="card">
+      <h3>📝 Do Processo de Criação Desta Carta</h3>
+      <div id="sec5" class="section-content">
+        <p>1. Esta carta foi criada com a ajuda do Chat GPT, modelo o3-mini-high.</p>
+        <p>2. O código gerado foi revisado antes de subir a versão final para o repositório.</p>
+        <p>3. A IDE utilizada foi o VS CODE da Microsoft.</p>
+        <p>4. O repositório utilizado foi o do GitHub, uma vez que permite hospedagem gratuita, porém sem possibilidade de personalização de URL.</p>
+      </div>
+      <button class="toggle-button" onclick="toggleSection('sec5', this)">📖 Clique aqui para ler</button>
+    </div>
+  </div>
+
+  <!-- Botões fixos de navegação (acima do rodapé) -->
+  <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
+  <button class="back-to-bottom" onclick="scrollToBottom()">⬇️</button>
+
+  <!-- Rodapé fixo -->
+  <footer>
+    Jesiel Pereira Matos - <span id="currentYear"></span>
+  </footer>
+
+  <script>
+    // IDs das seções
+    const sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5'];
+
+    function toggleSection(id, btn) {
+      const section = document.getElementById(id);
+      if (!section) return;
+      if (section.style.maxHeight && section.style.maxHeight !== '0px') {
+        section.style.maxHeight = '0';
+        section.classList.remove('open');
+        btn.textContent = '📖 Clique aqui para ler';
+      } else {
+        section.style.maxHeight = section.scrollHeight + 'px';
+        section.classList.add('open');
+        btn.textContent = '📕 Clique aqui para recolher';
+      }
+    }
+
+    // Funções para Expandir e Recolher todas as seções
+    function expandAll() {
+      sections.forEach(id => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        sec.style.maxHeight = sec.scrollHeight + 'px';
+        sec.classList.add('open');
+        const button = sec.parentNode.querySelector('.toggle-button');
+        if (button) button.textContent = '📕 Clique aqui para recolher';
+      });
+    }
+
+    function collapseAll() {
+      sections.forEach(id => {
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        sec.style.maxHeight = '0';
+        sec.classList.remove('open');
+        const button = sec.parentNode.querySelector('.toggle-button');
+        if (button) button.textContent = '📖 Clique aqui para ler';
+      });
+    }
+
+    window.addEventListener('resize', () => {
+      sections.forEach(id => {
+        const sec = document.getElementById(id);
+        if (sec && sec.style.maxHeight && sec.style.maxHeight !== '0px') {
+          sec.style.maxHeight = sec.scrollHeight + 'px';
+        }
+      });
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToBottom() {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+
+    // Atualiza o ano no rodapé
+    document.getElementById("currentYear").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
