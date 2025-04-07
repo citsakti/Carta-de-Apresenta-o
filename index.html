@@ -7,23 +7,47 @@
   <!-- Importação de fonte personalizada -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Variáveis CSS para o modo noturno (padrão) */
+    :root {
+      --bg-color: #121212;
+      --text-color: #CCCCCC; /* Texto um pouco mais escuro */
+      --accent-color: #9E9E9E;    /* Cor de destaque */
+      --accent-light: #B0B0B0;    /* Variante para hover */
+      --card-bg: #1e1e1e;
+      --footer-bg: #1e1e1e;
+      --button-text: #121212;
+    }
+    /* Variáveis para o modo diurno */
+    .light-mode {
+      --bg-color: #FFFFFF;
+      --text-color: #121212;
+      --accent-color: #333333;
+      --accent-light: #555555;
+      --card-bg: #F5F5F5;
+      --footer-bg: #F5F5F5;
+      --button-text: #FFFFFF;
+    }
+    /* Estilização geral */
     body {
       margin: 0;
-      background-color: #121212;
-      color: #FFFFFF;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: 'Roboto', Arial, Helvetica, sans-serif;
       line-height: 1.45;
     }
-    /* Cabeçalho fixo à esquerda com padding reduzido */
+    /* Cabeçalho fixo com padding reduzido */
     .header-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background-color: #121212;
+      background-color: var(--bg-color);
       padding: 15px 8vw;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .header {
       display: flex;
@@ -34,14 +58,14 @@
       margin: 0;
       /* Responsivo: tamanho mínimo 24px, tamanho ideal 5vw, máximo 42px */
       font-size: clamp(24px, 5vw, 42px);
-      color: #7ED957;
+      color: var(--accent-color);
       text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
       padding-bottom: 5px;
     }
     .header-line {
       width: 100%;
       height: 3px;
-      background: linear-gradient(to right, #7ED957, #a2f35b);
+      background: linear-gradient(to right, var(--accent-color), var(--accent-light));
       margin-bottom: 5px;
       border-radius: 2px;
     }
@@ -49,7 +73,7 @@
       margin: 4px 0 0 0;
       /* Responsivo: tamanho mínimo 18px, ideal 4vw, máximo 32px */
       font-size: clamp(18px, 4vw, 32px);
-      color: #FFFFFF;
+      color: var(--text-color);
       font-weight: 400;
     }
     .header-photo {
@@ -58,20 +82,20 @@
       height: 120px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid #FFFFFF;
-      box-shadow: 0 0 0 3px #7ED957;
+      border: 4px solid var(--text-color);
+      box-shadow: 0 0 0 3px var(--accent-color);
     }
     .header-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    /* Container principal: margem superior ajustada para que os botões fiquem visíveis abaixo do cabeçalho */
+    /* Container principal: margem superior ajustada */
     .container {
       padding: 5vw 8vw;
       text-align: justify;
       box-sizing: border-box;
-      margin-top: 120px;
+      margin-top: 140px;
       margin-bottom: 80px;
     }
     /* ==================== BOTÕES GERAIS ==================== */
@@ -82,9 +106,10 @@
       flex-wrap: wrap;
     }
     .toggle-button,
-    .expand-collapse-button {
-      background-color: #7ED957;
-      color: #121212;
+    .expand-collapse-button,
+    #mode-toggle {
+      background-color: var(--accent-color);
+      color: var(--button-text);
       border: none;
       border-radius: 6px;
       padding: 8px 14px;
@@ -94,17 +119,18 @@
       font-size: 16px;
     }
     .toggle-button:hover,
-    .expand-collapse-button:hover {
-      background-color: #a2f35b;
+    .expand-collapse-button:hover,
+    #mode-toggle:hover {
+      background-color: var(--accent-light);
       transform: scale(1.05);
     }
     /* ==================== CARDS (SEÇÕES) ==================== */
     .card {
-      border: 1px solid #7ED957;
+      border: 1px solid var(--accent-color);
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 20px;
-      background-color: #1e1e1e;
+      background-color: var(--card-bg);
       box-shadow: 0 4px 6px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
@@ -112,7 +138,7 @@
       transform: translateY(-3px);
     }
     .card h3 {
-      color: #7ED957;
+      color: var(--accent-color);
       margin: 0 0 6px 0;
       font-size: 24px;
     }
@@ -127,13 +153,12 @@
       opacity: 1;
     }
     /* ==================== BOTÕES FIXOS DE NAVEGAÇÃO ==================== */
-    /* Botão "subir tudo" (⬆️) fica no lado esquerdo agora */
     .back-to-top {
       position: fixed;
       bottom: 70px;
       left: 20px;
-      background-color: #7ED957;
-      color: #121212;
+      background-color: var(--accent-color);
+      color: var(--button-text);
       padding: 10px 15px;
       border: none;
       border-radius: 50%;
@@ -143,16 +168,15 @@
       font-weight: bold;
     }
     .back-to-top:hover {
-      background-color: #a2f35b;
+      background-color: var(--accent-light);
       transform: scale(1.1);
     }
-    /* Botão "descer tudo" (⬇️) fica no lado direito */
     .back-to-bottom {
       position: fixed;
       bottom: 70px;
       right: 20px;
-      background-color: #7ED957;
-      color: #121212;
+      background-color: var(--accent-color);
+      color: var(--button-text);
       padding: 10px 15px;
       border: none;
       border-radius: 50%;
@@ -162,7 +186,7 @@
       font-weight: bold;
     }
     .back-to-bottom:hover {
-      background-color: #a2f35b;
+      background-color: var(--accent-light);
       transform: scale(1.1);
     }
     /* ==================== BOTÃO RECOLHER TUDO NO FINAL ==================== */
@@ -179,14 +203,16 @@
       width: 100%;
       text-align: center;
       padding: 10px;
-      background-color: #1e1e1e;
+      background-color: var(--footer-bg);
       font-size: 16px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.5);
     }
-    
     /* Media Query para telas pequenas */
     @media (max-width: 480px) {
       .header-container {
         padding: 8px 4vw;
+        flex-direction: column;
+        align-items: flex-start;
       }
       .header {
         gap: 8px;
@@ -201,14 +227,15 @@
       .header-photo {
         width: 60px;
         height: 60px;
-        border: 2px solid #FFFFFF;
-        box-shadow: 0 0 0 2px #7ED957;
+        border: 2px solid var(--text-color);
+        box-shadow: 0 0 0 2px var(--accent-color);
       }
       .container {
-        margin-top: 90px;
+        margin-top: 150px;
       }
       .toggle-button,
-      .expand-collapse-button {
+      .expand-collapse-button,
+      #mode-toggle {
         font-size: 12px;
         padding: 4px 8px;
       }
@@ -219,7 +246,7 @@
   </style>
 </head>
 <body>
-  <!-- Cabeçalho fixo com foto (alinhado à esquerda) -->
+  <!-- Cabeçalho fixo com foto -->
   <div class="header-container">
     <div class="header">
       <div class="header-text">
@@ -234,10 +261,11 @@
   </div>
 
   <div class="container">
-    <!-- Botões "Expandir Tudo" e "Recolher Tudo" no topo -->
+    <!-- Botões "Expandir Tudo", "Recolher Tudo" e "Dia/Noite" -->
     <div class="button-group">
       <button class="expand-collapse-button" onclick="expandAll()">🔽 Expandir Tudo</button>
       <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
+      <button id="mode-toggle" onclick="toggleMode()">Dia</button>
     </div>
 
     <!-- Seção: Da Personalidade e Habilidades -->
@@ -288,7 +316,7 @@
       <button class="toggle-button" onclick="toggleSection('sec4', this)">📖 Clique aqui para ler</button>
     </div>
 
-    <!-- Botão "Recolher Tudo" no final da página (acima da nova sessão) -->
+    <!-- Botão "Recolher Tudo" no final da página -->
     <div class="button-group bottom-buttons">
       <button class="expand-collapse-button" onclick="collapseAll()">🔼 Recolher Tudo</button>
     </div>
@@ -306,11 +334,11 @@
     </div>
   </div>
 
-  <!-- Botões fixos de navegação (acima do rodapé) -->
+  <!-- Botões fixos de navegação -->
   <button class="back-to-top" onclick="scrollToTop()">⬆️</button>
   <button class="back-to-bottom" onclick="scrollToBottom()">⬇️</button>
 
-  <!-- Rodapé fixo -->
+  <!-- Rodapé fixo com sombra -->
   <footer>
     Jesiel Pereira Matos - <span id="currentYear"></span>
   </footer>
@@ -372,6 +400,30 @@
     function scrollToBottom() {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
+
+    // Alterna entre modos (Noite e Dia)
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const modeButton = document.getElementById("mode-toggle");
+      if (document.body.classList.contains("light-mode")) {
+        modeButton.textContent = "☀️Dia";
+      } else {
+        modeButton.textContent = "🌛Noite";
+      }
+    }
+
+    // Define o modo automaticamente conforme o horário local (entre 7h e 19h é Dia)
+    window.addEventListener('load', function(){
+      const hour = new Date().getHours();
+      const modeButton = document.getElementById("mode-toggle");
+      if (hour >= 7 && hour < 19) { // Modo Dia
+        document.body.classList.add("light-mode");
+        modeButton.textContent = "☀️Dia";
+      } else { // Modo Noite
+        document.body.classList.remove("light-mode");
+        modeButton.textContent = "🌛Noite";
+      }
+    });
 
     // Atualiza o ano no rodapé
     document.getElementById("currentYear").textContent = new Date().getFullYear();
